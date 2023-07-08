@@ -21,13 +21,13 @@ export function SignIn() {
         </Button>
       </View>
       <View className="flex-1 w-full items-center justify-around p-8">
-        <Input 
+        <Input
           leftContent={<Input.Icon icon={Envelope} />}
           value={value}
           onChangeText={(val) => setValue(val)}
           placeholder="Email"
         />
-        <Input 
+        <Input
           leftContent={<Input.Icon icon={Lock} />}
           rightContent={<Input.Icon icon={Eye} />}
           value={value}

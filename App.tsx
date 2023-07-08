@@ -1,7 +1,5 @@
-import Routes from './src/routes';
+import { SignIn } from './src/pages/auth/SignIn'
 
-export default function App() {
-  return (
-    <Routes />
-  );
+export default function App () {
+  return <SignIn />
 }
