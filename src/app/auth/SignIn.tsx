@@ -1,15 +1,15 @@
-import { View } from "react-native";
-import Button from "../../components/Button";
-import { GoogleLogo, AppleLogo, Envelope, Eye, Lock } from "phosphor-react-native";
-import { SafeAreaView } from "react-native-safe-area-context"
-import Input from "../../components/Input";
-import { useState } from "react";
+import { View } from 'react-native'
+import Button from '../../components/Button'
+import { GoogleLogo, AppleLogo, Envelope, Eye, Lock } from 'phosphor-react-native'
 
-export function SignIn() {
+import Input from '../../components/Input'
+import { useState } from 'react'
+
+export default function SignIn () {
   const [value, setValue] = useState('')
 
   return (
-    <SafeAreaView className="flex-1 w-full items-center justify-center">
+    <View className="flex-1 w-full items-center justify-center">
       <View className="flex-1 w-full items-center justify-around p-8">
         <Button color="secondary">
           <Button.Icon icon={GoogleLogo} weight="bold" />
@@ -24,17 +24,17 @@ export function SignIn() {
         <Input
           leftContent={<Input.Icon icon={Envelope} />}
           value={value}
-          onChangeText={(val) => setValue(val)}
+          onChangeText={(val) => { setValue(val) }}
           placeholder="Email"
         />
         <Input
           leftContent={<Input.Icon icon={Lock} />}
           rightContent={<Input.Icon icon={Eye} />}
           value={value}
-          onChangeText={(val) => setValue(val)}
+          onChangeText={(val) => { setValue(val) }}
           placeholder="Email"
         />
       </View>
-    </SafeAreaView>
-  );
+    </View>
+  )
 }

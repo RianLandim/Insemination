@@ -1,4 +1,4 @@
-import { SignIn } from './src/pages/auth/SignIn'
+import { SignIn } from './src/app/auth/SignIn'
 
 export default function App () {
   return <SignIn />

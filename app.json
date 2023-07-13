@@ -1,11 +1,15 @@
 {
   "expo": {
-    "name": "tasktugas",
-    "slug": "tasktugas",
+    "name": "compound",
+    "slug": "compound",
+    "scheme": "compound",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "experiments": {
+      "typedRoutes": true
+    },
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
