@@ -1,14 +1,15 @@
 {
   "expo": {
-    "name": "compound",
-    "slug": "compound",
-    "scheme": "compound",
+    "name": "insemination",
+    "slug": "insemination",
+    "scheme": "insemination",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "experiments": {
-      "typedRoutes": true
+      "typedRoutes": true,
+      "tsconfigPaths": true
     },
     "splash": {
       "image": "./assets/splash.png",
@@ -29,6 +30,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-router"
+    ]
   }
 }

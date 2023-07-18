@@ -1,8 +1,8 @@
 import { SafeAreaView, Text } from 'react-native'
 
-export default function SignUp () {
+export default function SignUp() {
   return (
-    <SafeAreaView className="flex-1 w-full p-4">
+    <SafeAreaView className="w-full flex-1 p-4">
       <Text>Teste2</Text>
     </SafeAreaView>
   )
