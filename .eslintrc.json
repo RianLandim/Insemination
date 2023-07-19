@@ -1,6 +1,7 @@
 {
   "extends": "@rocketseat/eslint-config/react",
   "rules": {
+    "no-use-before-define": "off",
     "import/order": [
       "error",
       {
