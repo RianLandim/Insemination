@@ -10,6 +10,7 @@ const input = tv({
   variants: {
     variant: {
       filled: 'bg-slate-100',
+      filledWhite: 'bg-white',
     },
   },
   defaultVariants: {

@@ -1,5 +1,5 @@
 import { RealmProvider } from '@realm/react'
-import { ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 
 type Props = {
   children: ReactNode
