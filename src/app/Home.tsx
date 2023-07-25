@@ -3,6 +3,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native'
 import { useQuery, useRealm } from '@realm/react'
@@ -10,6 +11,7 @@ import React, { useState } from 'react'
 import { z } from 'zod'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from 'expo-router'
 
 import Button from '@/components/Button'
 import { Cow } from '@/database/schemas/cow'
@@ -20,11 +22,17 @@ import { formatFullDate } from '@/utils/format-date'
 
 export default function Home() {
   const [open, setOpen] = useState(false)
+  const [search, setSearch] = useState('')
 
   const cows = useQuery<Cow>('Cow')
+  const router = useRouter()
+
+  const filteredCows = cows.filter((cow) =>
+    cow.name.toLowerCase().includes(search.toLowerCase()),
+  )
 
   return (
-    <View className="item-center mt-6 flex-1 justify-around p-8">
+    <View className="item-center mt-6 flex-1 justify-around bg-slate-200 p-8">
       <View className="w-full flex-1 flex-row items-center justify-between">
         <Text className="text-2xl font-bold uppercase">Gado</Text>
         <View className="w-1/2 flex-row items-center justify-evenly">
@@ -39,18 +47,27 @@ export default function Home() {
       </View>
       <View className="w-full flex-[3] items-center justify-center">
         <View className="mb-3 w-full">
-          <Input variant="filledWhite" placeholder="Pesquisar" />
+          <Input
+            variant="filledWhite"
+            placeholder="Pesquisar"
+            onChangeText={(val) => setSearch(val)}
+          />
         </View>
         <FlatList
-          data={cows}
+          data={filteredCows}
           className="w-full"
           contentContainerStyle={{ gap: 12 }}
           keyExtractor={(item) => item._id.toHexString()}
           renderItem={({ item }) => (
-            <View className="w-full items-center justify-evenly rounded-md bg-white p-8">
+            <TouchableOpacity
+              onPress={() =>
+                router.push(`/CowDetail/${item._id.toHexString()}`)
+              }
+              className="w-full items-center justify-evenly rounded-md bg-white p-8"
+            >
               <Text>{item.name}</Text>
               <Text>{formatFullDate(item.birthdate)}</Text>
-            </View>
+            </TouchableOpacity>
           )}
         />
       </View>
@@ -89,7 +106,7 @@ function CreateCowDialog({ open, onDissmis }: CowDialog) {
     addCow(data)
   }
 
-  function addCow({ birthdate, code, name, origin }: NewCowSchemaProps) {
+  function addCow({ code, name, origin }: NewCowSchemaProps) {
     realm.write(() => {
       realm.create<Cow>('Cow', {
         _id: new Realm.BSON.ObjectID(),

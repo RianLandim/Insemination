@@ -7,3 +7,5 @@ const realmConfig: Realm.Configuration = {
 }
 
 export const realmContext = createRealmContext(realmConfig)
+
+export const schemas = [Cow]
